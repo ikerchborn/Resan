@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Resan Sn - Amigo</title> 
+     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+     <link
+       rel="stylesheet"
+       as="style"
+       onload="this.rel='stylesheet'"
+       href="https://fonts.googleapis.com/css2?display=swap&family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
+     />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3132/3132562.png">
+   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="font-['Epilogue','Noto Sans',sans-serif] pl-4">
+    <header class="flex items-center justify-between border-b border-[#f4f2f0] px-10 py-3">
+        <div class="flex items-center gap-4 text-[#181411]">
+          <span class="size-4 inline-block">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <h1 class="text-lg font-bold tracking-[-0.015em]">Resan Sn</h1>
+        </div>
+        <nav class="flex flex-1 justify-end gap-7 items-center">
+          <ul class="flex items-center gap-9 text-sm font-medium text-[#181411]">
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="./journal.html">Amigo</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+            </nav>
+      </header>
+    <main>
+        <div class="ml-2 pt-4 static top-60">
+            <h1 class="font-['Epilogue','Noto Sans',sans-serif] font-bold text-2xl" >
+            Hola ¿Como estas el dia de hoy?
+        </h1>
+        <textarea class="resize-none rounded-lg mt-8 h-32 w-80 justify-start text-start" type="text" placeholder="Comparte tus emociones y sentimientos aqui"></textarea>
+        <button id="analizar" class="left-3 bg-yellow-500 rounded-full p-2 relative top-12 ml-28 text-xs font-bold hover:bg-yellow-400" >Analiza tu emoción</button>
+        <!--Aqui debe ejecutar el js que analice el texto reconociendo las palabras exactamente usadas -->
+        </div>
+        <!--Aqui debe ir el resultado de lo que es tu emocion con el texto -->
+        <div class="ml-2 pt-6" >
+            <h1>Emocion detectada</h1>
+        <output>Tu emocion es : </output>
+        <div class="w-56 border-opacity-70 border-2 border-black rounded-md p-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore eligendi odio dolore veritatis alias voluptatum dolores laboriosam sit voluptatibus? Tempore quod autem odio neque dolore beatae hic eveniet illo.</div>
+        </div>
+
+    </main>
+    <footer>
+        <div class="flex justify-center items-center">
+            <p>Derechos reservados &copy; 2025 Resan Sn</p>
+        </div>
+    </footer>
+</body>
+</html>

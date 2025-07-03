@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resan Sn</title>
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3132/3132562.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body class="min-h-screen bg-white font-['Epilogue','Noto Sans',sans-serif] overflow-x-hidden">
+    <div class="flex flex-col min-h-screen">
+      
+      <!-- Header -->
+      <header class="flex items-center justify-between border-b border-[#f4f2f0] px-10 py-3">
+        <div class="flex items-center gap-4 text-[#181411]">
+          <span class="size-4 inline-block">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <h1 class="text-lg font-bold tracking-[-0.015em]">Resan Sn</h1>
+        </div>
+        <nav class="flex flex-1 justify-end gap-8 items-center">
+          <ul class="flex items-center gap-9 text-sm font-medium text-[#181411]">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="./journal.html">Amigo</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+            </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex justify-center px-40 py-5">
+        <article class="flex flex-col max-w-[960px] w-full">
+          <section class="@container @[480px]:p-4">
+            <div
+              class="flex flex-col items-center justify-center min-h-[480px] gap-6 p-4 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl"
+              style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3saUdm9EiNizvA83NY8ZjQCKFk_hwt6v7i_FhslVmIkeGBlAofqeCq--OGF5UhZe1yTec0vsqdxgH2S3X9rrgC91KyB5UBpy4RjYGrzqGhGjRNfOm23ufJUSWlEA8k771VwOI3tNeQdCxKkEDkjHpNRAHBDMY4hZG-UnBnn-Kt3EL9qV6qUQbikWdpZoWslNxUjupMuLtd24TpO2J9qzfzTLvYVWk5FeKrf2pKrd3CDycPLAzXhQhXkAT-jfdv17BpcLb85KzTDC4');"
+            >
+              <header class="text-center">
+                <h2 class="text-4xl font-black text-white tracking-[-0.033em] @[480px]:text-5xl">Bienvenido a Resan</h2>
+                <p class="text-sm font-normal text-white @[480px]:text-base">Tu espacio seguro para explorar y comprender tus emociones. Estamos aquí para apoyarte en cada paso del camino..</p>
+              </header>
+              <button class="h-10 px-4 rounded-full bg-[#ed8b2a] text-sm font-bold tracking-[0.015em] @[480px]:h-12 @[480px]:text-base">
+                <span class="truncate">Chat amigo</span>
+              </button>
+            </div>
+          </section>
+        </article>
+      </main>
+
+      <!-- Footer -->
+      <footer class="flex justify-center">
+        <section class="flex flex-col max-w-[960px] w-full px-5 py-10 text-center @container">
+          <nav class="flex flex-wrap justify-center items-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+            <a class="text-[#897561] text-base font-normal min-w-40" href="#">Politicas de privacidad</a>
+            <a class="text-[#897561] text-base font-normal min-w-40" href="#">Terminos de servicio</a>
+            <a class="text-[#897561] text-base font-normal min-w-40" href="#">Contactanos</a>
+          </nav>
+          <p class="text-[#897561] text-base font-normal mt-6">@2025. Resan. Todos los derechos reservados.</p>
+        </section>
+      </footer>
+
+    </div>
+  </body>
+</html>
+

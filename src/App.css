@@ -1,0 +1,196 @@
+/* ---------- Reset y fuente ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Epilogue';
+  background-color: #f8f8f7;
+  color: #34401a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem; /* menos padding general */
+  min-height: 90vh;
+}
+
+/* ---------- Contenedor Principal ---------- */
+.container {
+  width: 100%;
+  max-width: 900px;
+  background-color: #e6eacb; /* verde-beige claro */
+  border-radius: 2%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 1rem; /* menos padding */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* espacio vertical reducido */
+}
+
+/* ---------- Header ---------- */
+.header {
+  background-color: #e2e9c7;
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4b5d1f;
+  line-height: 1.4;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  width: 100%; /* full-width barra superior */
+  max-width: none;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #dfe7c4; /* separador sutil */
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #4b5d1f;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem; /* menos espacio entre enlaces */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4b5d1f;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #5f742a;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  width: 100%;
+  max-width: 800px; /* un poco más angosto */
+  margin: 0 auto 1.75rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem; /* tamaño reducido */
+  font-weight: 900;
+  color: #4b5d1f;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #4b5d1f;
+}
+
+/* ---------- Chat Wrapper ---------- */
+.chat-wrapper {
+  background-color: #eef3df;
+  border: 1px solid #dfe7c4;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* menor separación interna */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.chat-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4b5d1f;
+  text-align: center;
+}
+
+.chat-subtitle {
+  text-align: center;
+  color: #4b5d1f;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+/* ---------- Ajuste DeepChat interno ---------- */
+.chat-wrapper deep-chat {
+  width: 100%;
+}
+
+/* ---------- Root (zona de React) ---------- */
+#root {
+  background-color: #cfd99d;
+  border-radius: 16px;
+  padding: 1rem; /* reduce padding interno del chat */
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  #root {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .hero p {
+    text-align: left;
+  }
+}
