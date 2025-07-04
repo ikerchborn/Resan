@@ -25,7 +25,7 @@ function App() {
       <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
 
       <DeepChat
-        connect={{ url: "https://resan-backend.vercel.app/api/chat" }}
+        connect={{ url: "https://resan-backend-ivyxy5nhr-luis-projects-2305765c.vercel.app/" }}
         style={{
           background: "#ffffff",
           borderRadius: "8px",
