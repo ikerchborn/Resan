@@ -1,15 +1,1 @@
-{
-  "builds": [
-    {
-      "src": "frontend/vite.config.ts",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "frontend/dist" }
-    },
-    { "src": "api/**/*", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "frontend/dist/index.html" }
-  ]
-}
+
