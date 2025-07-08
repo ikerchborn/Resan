@@ -31,8 +31,8 @@ function App() {
         <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
         <DeepChat
           style={{ borderRadius: '10px', height: '450px', width: '100%' }} // Ajusta el estilo como necesites
-          request={{
-            url: '/api/chat', // ¡Esta es la URL de tu función serverless!
+          connect={{
+            url: '/api/chat', // Endpoint serverless
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
