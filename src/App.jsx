@@ -34,6 +34,10 @@ function App() {
           style={{ borderRadius: '10px', height: '450px', width: '100%' }} // Ajusta el estilo como necesites
           request={{
             url: '/api/chat', // ¡Esta es la URL de tu función serverless!
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
           }}
           messageStyles={{
             user: { backgroundColor: '#ffffff' },
