@@ -30,7 +30,6 @@ function App() {
         <h2 className="chat-title">Tu Espacio para la Reflexión</h2>
         <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
         <DeepChat
-          // demo={true} // Quita esto cuando uses tu propia API para que no use la demo
           style={{ borderRadius: '10px', height: '450px', width: '100%' }} // Ajusta el estilo como necesites
           request={{
             url: '/api/chat', // ¡Esta es la URL de tu función serverless!
