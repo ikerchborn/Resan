@@ -10,22 +10,22 @@
     <link rel="stylesheet" href="src/assets/recursos.css" />
   </head>
   <body>
-    <!-- Barra de navegación principal -->
-    <header class="top-nav">
-      <div class="nav-content">
-        <div class="brand">
-          <img src="src/assets/logo.svg" alt="Resan logo" class="nav-logo" />
-          <span class="brand-name">Resan</span>
+    <div id="root">
+      <header className="top-nav">
+        <div className="nav-content">
+          <div className="brand">
+            <img src={logoLeaf} alt="Resan logo" className="nav-logo" />
+            <span className="brand-name">Resan</span>
+          </div>
+          <nav className="nav-links">
+            <a href="./index.html">Chat</a>
+            <a href="./src/recursos.html">Recursos</a>
+            <a href="./src/tests.html">Tests</a>
+            <a href="./src/ayuda.html">Ayuda</a>
+          </nav>
         </div>
-        <nav class="nav-links">
-          <a href="./index.html">Chat</a>
-          <a href="./src/recursos.html">Recursos</a>
-          <a href="./src/tests.html">Tests</a>
-          <a href="./src/ayuda.html">Ayuda</a>
-        </nav>
-      </div>
-    </header>
-    <div id="root"></div>
+      </header>
+    </div>
     <script type="module" src="src/main.jsx"></script>
   </body>
 </html>

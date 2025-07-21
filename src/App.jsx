@@ -17,9 +17,10 @@ function App() {
             <span className="brand-name">Resan</span>
           </div>
           <nav className="nav-links">
-            <a href="#chat">Chat</a>
-            <a href="#recursos">Recursos</a>
-            <a href="#ayuda">Ayuda</a>
+            <a href="./index.html">Chat</a>
+            <a href="./src/recursos.html">Recursos</a>
+            <a href="./src/tests.html">Tests</a>
+            <a href="./src/ayuda.html">Ayuda</a>
           </nav>
         </div>
       </header>
