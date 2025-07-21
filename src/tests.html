@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tests • Resan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/recursos.css" />
+    <style>
+      :root {
+        --accent: #4caf50;
+      }
+      .btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn:hover { background: #43a047; }
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,.08);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .options-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .option {
+        background: #f9f9f9;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      input[type="radio"]:checked + span {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra de navegación compartida -->
+    <header class="top-nav">
+      <div class="nav-content">
+        <div class="brand">
+          <img src="assets/logo.svg" alt="Resan logo" class="nav-logo" />
+          <span class="brand-name">Resan</span>
+        </div>
+        <nav class="nav-links">
+          <a href="../index.html">Chat</a>
+          <a href="./recursos.html">Recursos</a>
+          <a href="./tests.html" class="active">Tests</a>
+          <a href="./ayuda.html">Ayuda</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h1 class="page-title">Pruebas y Autoevaluaciones</h1>
+      <p class="page-subtitle">Explora tests interactivos para conocer mejor tu bienestar emocional.</p>
+      <section class="resource-section" id="tests-container">
+        <!-- El listado de tests y la interfaz del cuestionario se generan dinámicamente mediante tests.js -->
+      </section>
+      </main>
+    <script type="module" src="assets/tests.js"></script>
+  </body>
+</html>
