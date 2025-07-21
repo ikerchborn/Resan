@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resan logo - leaf">
+  <defs>
+    <linearGradient id="leafGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b7e4c7"/>
+      <stop offset="100%" stop-color="#95d5b2"/>
+    </linearGradient>
+  </defs>
+  <!-- Leaf outline -->
+  <path d="M32 4C18 4 8 15 8 28c0 15 14 28 24 32 10-4 24-17 24-32C56 15 46 4 32 4z" stroke="#2d6a4f" stroke-width="3" fill="url(#leafGradient)"/>
+  <!-- Leaf vein -->
+  <path d="M32 12v36" stroke="#2d6a4f" stroke-width="3" stroke-linecap="round"/>
+  <!-- Side veins -->
+  <path d="M32 28l-12-8" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 36l12-8" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round"/>
+</svg>
