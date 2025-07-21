@@ -18,9 +18,9 @@ function App() {
           </div>
           <nav className="nav-links">
             <a href="./index.html">Chat</a>
-            <a href="./src/recursos.html">Recursos</a>
-            <a href="./src/tests.html">Tests</a>
-            <a href="./src/ayuda.html">Ayuda</a>
+            <a href="./recursos.html">Recursos</a>
+            <a href="./tests.html">Tests</a>
+            <a href="./ayuda.html">Ayuda</a>
           </nav>
         </div>
       </header>
