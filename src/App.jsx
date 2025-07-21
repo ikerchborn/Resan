@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// React core
+import React from 'react';
 import logoLeaf from './assets/logo.svg';
 import './App.css';
 
@@ -17,10 +16,10 @@ function App() {
             <span className="brand-name">Resan</span>
           </div>
           <nav className="nav-links">
-            <a href="./index.html">Chat</a>
-            <a href="./recursos.html">Recursos</a>
-            <a href="./tests.html">Tests</a>
-            <a href="./ayuda.html">Ayuda</a>
+            <a href="index.html">Chat</a>
+            <a href="recursos.html">Recursos</a>
+            <a href="tests.html">Tests</a>
+            <a href="ayuda.html">Ayuda</a>
           </nav>
         </div>
       </header>
