@@ -1,8 +1,7 @@
 {
-    "rewrites": [
-      { "source": "/recursos", "destination": "/recursos.html" },
-      { "source": "/tests", "destination": "/tests.html" },
-      { "source": "/ayuda", "destination": "/ayuda.html" },
-      { "source": "/(.*)", "destination": "/" }
-    ]
-  }
+  "rewrites": [
+    { "source": "/recursos", "destination": "/recursos.html" },
+    { "source": "/tests", "destination": "/tests.html" },
+    { "source": "/ayuda", "destination": "/ayuda.html" }
+  ]
+}
