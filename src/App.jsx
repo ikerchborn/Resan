@@ -32,7 +32,6 @@ function App() {
         <DeepChat
           style={{ borderRadius: '10px', height: '450px', width: '100%' }} // Ajusta el estilo como necesites
           connect={{
-            stream: true,
             url: '/api/chat', // Endpoint serverless
             method: 'POST',
             headers: {
