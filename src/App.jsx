@@ -35,7 +35,6 @@ function App() {
             stream: true,
             url: '/api/chat', // Endpoint serverless
             method: 'POST',
-            instructions:"Eres un psicólogo virtual empático y respetuoso. Responde con amabilidad, usando lenguaje comprensible, validando las emociones del usuario y ofreciendo sugerencias de autocuidado.",
             headers: {
               'Content-Type': 'application/json'
             }
