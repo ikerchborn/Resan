@@ -30,21 +30,29 @@ function App() {
         <h2 className="chat-title">Tu Espacio para la Reflexión</h2>
         <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
         <DeepChat
-          style={{ borderRadius: '10px', height: '450px', width: '100%' }} // Ajusta el estilo como necesites
-          connect={{
-            "stream": {"simulation": 6},
-            url: '/api/chat', // Endpoint serverless
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }}
-          messageStyles={{
-            user: { backgroundColor: '#ffffff' },
-            ai: { backgroundColor: '#f5f5f5' }
-          }}
-           // Puedes añadir otras propiedades de DeepChat aquí, como defaultMessages, textInput, etc.
-      />
+  style={{ borderRadius: '10px', height: '450px', width: '100%' }}
+  connect={{
+    "stream": {"simulation": 6},
+    url: '/api/chat',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }}
+  interceptors={{
+    request: (body) => {
+      body.messages.unshift({
+        role: 'system',
+        text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
+      });
+      return body;
+    }
+  }}
+  messageStyles={{
+    user: { backgroundColor: '#ffffff' },
+    ai: { backgroundColor: '#f5f5f5' }
+  }}
+    />
       </div>
       </main>
     </>
