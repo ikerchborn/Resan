@@ -52,8 +52,16 @@ export default async function handler(req, res) {
   
         // Envía la respuesta a DeepChat en el formato esperado
         // DeepChat espera un objeto con una propiedad 'text' para un mensaje simple
-        res.status(200).json({ text: assistantMessage });
-  
+        // Envía la respuesta a DeepChat en el formato esperado
+        res.status(200).json({
+      messages: [
+        {
+          role: 'ai',
+          text: assistantMessage,
+        }
+      ]
+    });
+
       } catch (error) {
         console.error('Error en la función serverless /api/chat:', error);
         res.status(500).json({ error: 'Error interno del servidor.' });
