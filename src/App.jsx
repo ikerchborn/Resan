@@ -1,19 +1,26 @@
-// React core
 import React, { useState, useRef } from 'react';
 import logoLeaf from './assets/logo.svg';
 import './App.css';
-
-// Importa DeepChat y sus estilos
 import { DeepChat } from 'deep-chat-react';
 
 function App() {
   const [conversationHistory, setConversationHistory] = useState([]);
-  const chatRef = useRef(null); // Referencia opcional para uso futuro
+  const chatRef = useRef(null);
 
-  const handleNewMessages = (messages) => {
-    // Actualiza el historial agregando los mensajes nuevos
-    const updatedHistory = [...conversationHistory, ...messages];
-    setConversationHistory(updatedHistory);
+  // Guarda el nuevo mensaje del usuario
+  const handleUserMessage = (body) => {
+    const lastUserMessage = body.messages[0]; // mensaje recién enviado por el usuario
+    setConversationHistory((prev) => [...prev, { role: 'user', text: lastUserMessage.text }]);
+    return body;
+  };
+
+  // Guarda la respuesta del asistente (IA)
+  const handleAIResponse = (body) => {
+    const aiMessage = body.messages?.[0]; // respuesta de la IA
+    if (aiMessage) {
+      setConversationHistory((prev) => [...prev, { role: 'ai', text: aiMessage.text }]);
+    }
+    return body;
   };
 
   return (
@@ -52,35 +59,9 @@ function App() {
             }}
             interceptors={{
               request: (body) => {
+                // Inserta el prompt del sistema
                 const systemPrompt = {
                   role: 'system',
-                  text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.',
-                };
+                  text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
 
-                // Junta systemPrompt, historial y mensaje actual
-                body.messages = [
-                  systemPrompt,
-                  ...conversationHistory,
-                  ...body.messages, // último mensaje nuevo
-                ];
-                return body;
-              },
-              response: (body) => {
-                // Cuando la IA responde, guarda esa respuesta también
-                handleNewMessages(body.messages);
-                return body;
-              },
-            }}
-            messageStyles={{
-              user: { backgroundColor: '#ffffff' },
-              ai: { backgroundColor: '#f5f5f5' },
-            }}
-          />
-        </div>
-      </main>
-    </>
-  );
-}
-
-export default App;
 
