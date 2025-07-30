@@ -1,5 +1,5 @@
 // React core
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import logoLeaf from './assets/logo.svg';
 import './App.css';
 
@@ -7,6 +7,15 @@ import './App.css';
 import { DeepChat } from 'deep-chat-react';
 
 function App() {
+  const [conversationHistory, setConversationHistory] = useState([]);
+  const chatRef = useRef(null); // Referencia opcional para uso futuro
+
+  const handleNewMessages = (messages) => {
+    // Actualiza el historial agregando los mensajes nuevos
+    const updatedHistory = [...conversationHistory, ...messages];
+    setConversationHistory(updatedHistory);
+  };
+
   return (
     <>
       <header className="top-nav">
@@ -26,36 +35,52 @@ function App() {
       <main>
         <h1 className="site-title">Resan</h1>
         <p className="site-subtitle">Tu compañero de bienestar emocional. Un rincón tranquilo en internet para reflexionar y encontrar apoyo.</p>
-    <div id="chat" className="chat-wrapper">
-        <h2 className="chat-title">Tu Espacio para la Reflexión</h2>
-        <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
-        <DeepChat
-  style={{ borderRadius: '10px', height: '450px', width: '100%' }}
-  connect={{
-    "stream": {"simulation": 6},
-    url: '/api/chat',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }}
-  interceptors={{
-    request: (body) => {
-      body.messages.unshift({
-        role: 'system',
-        text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
-      });
-      return body;
-    }
-  }}
-  messageStyles={{
-    user: { backgroundColor: '#ffffff' },
-    ai: { backgroundColor: '#f5f5f5' }
-  }}
-    />
-      </div>
+        <div id="chat" className="chat-wrapper">
+          <h2 className="chat-title">Tu Espacio para la Reflexión</h2>
+          <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
+
+          <DeepChat
+            ref={chatRef}
+            style={{ borderRadius: '10px', height: '450px', width: '100%' }}
+            connect={{
+              stream: { simulation: 6 },
+              url: '/api/chat',
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }}
+            interceptors={{
+              request: (body) => {
+                const systemPrompt = {
+                  role: 'system',
+                  text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.',
+                };
+
+                // Junta systemPrompt, historial y mensaje actual
+                body.messages = [
+                  systemPrompt,
+                  ...conversationHistory,
+                  ...body.messages, // último mensaje nuevo
+                ];
+                return body;
+              },
+              response: (body) => {
+                // Cuando la IA responde, guarda esa respuesta también
+                handleNewMessages(body.messages);
+                return body;
+              },
+            }}
+            messageStyles={{
+              user: { backgroundColor: '#ffffff' },
+              ai: { backgroundColor: '#f5f5f5' },
+            }}
+          />
+        </div>
       </main>
     </>
   );
 }
-export default App
+
+export default App;
+
