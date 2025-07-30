@@ -63,5 +63,30 @@ function App() {
                 const systemPrompt = {
                   role: 'system',
                   text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
+                };
 
+                // Inserta historial anterior + nuevo mensaje
+                const newBody = {
+                  ...body,
+                  messages: [systemPrompt, ...conversationHistory, ...body.messages]
+                };
+
+                return handleUserMessage(newBody); // guarda el mensaje del usuario
+              },
+              response: (body) => {
+                return handleAIResponse(body); // guarda la respuesta del asistente
+              }
+            }}
+            messageStyles={{
+              user: { backgroundColor: '#ffffff' },
+              ai: { backgroundColor: '#f5f5f5' },
+            }}
+          />
+        </div>
+      </main>
+    </>
+  );
+}
+
+export default App;
 
