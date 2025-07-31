@@ -1,12 +1,30 @@
 // React core
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import logoLeaf from './assets/logo.svg';
 import './App.css';
 import { DeepChat } from 'deep-chat-react';
 
 function App() {
 
-  const [conversationHistory, setConversationHistory] = useState([]);
+  // Lee historial guardado en localStorage (si existe)
+  const [conversationHistory, setConversationHistory] = useState(() => {
+    try {
+      const stored = sessionStorage.getItem('conversationHistory');
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      console.error('Error leyendo conversación en sesión', e);
+      return [];
+    }
+  });
+
+  // Sincroniza el historial en localStorage cada vez que cambie
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('conversationHistory', JSON.stringify(conversationHistory));
+    } catch (e) {
+      console.error('Error guardando conversación en sesión', e);
+    }
+  }, [conversationHistory]);
   const chatRef = useRef(null);
 
   // Guarda el nuevo mensaje del usuario
