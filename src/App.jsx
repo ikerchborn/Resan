@@ -1,9 +1,11 @@
+// React core
 import React, { useState, useRef } from 'react';
 import logoLeaf from './assets/logo.svg';
 import './App.css';
 import { DeepChat } from 'deep-chat-react';
 
 function App() {
+
   const [conversationHistory, setConversationHistory] = useState([]);
   const chatRef = useRef(null);
 
@@ -22,6 +24,9 @@ function App() {
     }
     return body;
   };
+
+
+
 
   return (
     <>
@@ -42,6 +47,7 @@ function App() {
       <main>
         <h1 className="site-title">Resan</h1>
         <p className="site-subtitle">Tu compañero de bienestar emocional. Un rincón tranquilo en internet para reflexionar y encontrar apoyo.</p>
+
         <div id="chat" className="chat-wrapper">
           <h2 className="chat-title">Tu Espacio para la Reflexión</h2>
           <p className="chat-subtitle">Vierte tus pensamientos, sentimientos y reflexiones a continuación.</p>
@@ -83,10 +89,11 @@ function App() {
             }}
           />
         </div>
+
+
       </main>
     </>
   );
 }
 
 export default App;
-
