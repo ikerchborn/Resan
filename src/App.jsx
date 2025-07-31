@@ -36,9 +36,8 @@ function App() {
 
   // Guarda la respuesta del asistente (IA)
   const handleAIResponse = (body) => {
-    const aiMessage = body.messages?.[0]; // respuesta de la IA
-    if (aiMessage) {
-      setConversationHistory((prev) => [...prev, { role: 'ai', text: aiMessage.text }]);
+    if (body?.text) {
+      setConversationHistory((prev) => [...prev, { role: 'ai', text: body.text }]);
     }
     return body;
   };
@@ -89,10 +88,12 @@ function App() {
                   text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
                 };
 
-                // Inserta historial anterior + nuevo mensaje
+                // Crea historial actualizado (incluye el mensaje recién enviado)
+                const historyWithPending = [...conversationHistory, { role: 'user', text: body.messages[0].text }];
+
                 const newBody = {
                   ...body,
-                  messages: [systemPrompt, ...conversationHistory, ...body.messages]
+                  messages: [systemPrompt, ...historyWithPending]
                 };
 
                 return handleUserMessage(newBody); // guarda el mensaje del usuario
