@@ -29,8 +29,10 @@ function App() {
 
   // Guarda el nuevo mensaje del usuario
   const handleUserMessage = (body) => {
-    const lastUserMessage = body.messages[0]; // mensaje recién enviado por el usuario
-    setConversationHistory((prev) => [...prev, { role: 'user', text: lastUserMessage.text }]);
+    const lastUser = [...body.messages].reverse().find(m => m.role === 'user');
+    if (lastUser) {
+      setConversationHistory((prev) => [...prev, { role: 'user', text: lastUser.text }]);
+    }
     return body;
   };
 
@@ -88,15 +90,17 @@ function App() {
                   text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
                 };
 
-                // Crea historial actualizado (incluye el mensaje recién enviado)
-                const historyWithPending = [...conversationHistory, { role: 'user', text: body.messages[0].text }];
+                // Añade el mensaje del usuario actual al historial y sincroniza cache
+                const pendingUser = { role: 'user', text: body.messages[0].text };
+                const updatedHistory = [...conversationHistory, pendingUser];
+                setConversationHistory(updatedHistory);
 
                 const newBody = {
                   ...body,
-                  messages: [systemPrompt, ...historyWithPending]
+                  messages: [systemPrompt, ...updatedHistory]
                 };
 
-                return handleUserMessage(newBody); // guarda el mensaje del usuario
+                return newBody;
               },
               response: (body) => {
                 return handleAIResponse(body); // guarda la respuesta del asistente
