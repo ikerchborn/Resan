@@ -59,6 +59,7 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Error interno del servidor.' });
       }
     } else {
+      //cambio necesario
       // Si no es un método POST, devuelve un error
       res.setHeader('Allow', ['POST']);
       res.status(405).end(`Método ${req.method} no permitido`);
