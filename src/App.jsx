@@ -84,7 +84,7 @@ function App() {
             connect={{
               url: '/api/chat',
               method: 'POST',
-              stream : 'True',
+              stream : True ,
               headers: {
                 'Content-Type': 'application/json',
                 'x-session-id': sessionId,
