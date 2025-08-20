@@ -6,6 +6,15 @@ import { DeepChat } from 'deep-chat-react';
 
 function App() {
 
+  // Generate or retrieve a per-tab sessionId for server-side memory
+  const [sessionId] = useState(() => {
+    const existing = sessionStorage.getItem('sessionId');
+    if (existing) return existing;
+    const uuid = (crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+    sessionStorage.setItem('sessionId', uuid);
+    return uuid;
+  });
+
   // Lee historial guardado en localStorage (si existe)
   const [conversationHistory, setConversationHistory] = useState(() => {
     try {
@@ -77,26 +86,28 @@ function App() {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'x-session-id': sessionId,
               },
             }}
             interceptors={{
               request: (body) => {
-                // Inserta el prompt del sistema
-                const systemPrompt = {
-                  role: 'system',
-                  text: 'Responde siempre de forma amable, empática y con un enfoque de apoyo psicológico y emocional.'
-                };
-
-                // Añade el mensaje del usuario actual al historial y sincroniza cache
-                const pendingText = body?.messages?.[0]?.text ?? '';
+                // Añade el mensaje del usuario actual al historial de UI y sincroniza cache de sesión
+                const lastUserMsg = [...(body?.messages ?? [])].reverse().find(m => m.role === 'user');
+                const pendingText = lastUserMsg?.text ?? '';
                 const pendingUser = { role: 'user', text: pendingText };
                 const updatedHistory = [...conversationHistory, pendingUser];
                 setConversationHistory(updatedHistory);
 
                 const newBody = {
                   ...body,
-                  messages: [systemPrompt, ...updatedHistory]
+                  // Para el backend solo enviamos el turno actual; el servidor mantiene el historial por sessionId
+                  messages: [pendingUser]
                 };
+
+                // Debug: verify messages being sent
+                try {
+                  console.debug('[DeepChat] Sending roles:', newBody.messages.map(m => m.role), 'sessionId:', sessionId);
+                } catch (e) {}
 
                 return newBody;
               },
