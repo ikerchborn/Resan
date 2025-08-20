@@ -38,14 +38,12 @@ function App() {
 
   // Guarda la respuesta del asistente (IA)
   const handleAIResponse = (body) => {
-    if (body?.text) {
+    // Nuestra API devuelve { text: string }
+    if (body && typeof body.text === 'string') {
       setConversationHistory((prev) => [...prev, { role: 'ai', text: body.text }]);
     }
     return body;
   };
-
-
-
 
   return (
     <>
@@ -75,7 +73,6 @@ function App() {
             ref={chatRef}
             style={{ borderRadius: '10px', height: '450px', width: '100%' }}
             connect={{
-              stream: { simulation: 6 },
               url: '/api/chat',
               method: 'POST',
               headers: {
@@ -91,7 +88,8 @@ function App() {
                 };
 
                 // Añade el mensaje del usuario actual al historial y sincroniza cache
-                const pendingUser = { role: 'user', text: body.messages[0].text };
+                const pendingText = body?.messages?.[0]?.text ?? '';
+                const pendingUser = { role: 'user', text: pendingText };
                 const updatedHistory = [...conversationHistory, pendingUser];
                 setConversationHistory(updatedHistory);
 
